@@ -150,17 +150,37 @@ fn main() {
     format!("{:x}", hasher.finalize())
     }
     
+    fn verify_record(record: &SessionRecord) -> bool {
+    let expected = generate_hash(
+        record.start_time,
+        record.end_time,
+        record.duration,
+        );
+
+    expected == record.hash
+    }
+
     fn show_history() {
     let history = load_history();
-    for (i, h) in history.iter().enumerate() {
+
+    if history.is_empty() {
+        println!("No session history found.");
+        return;
+    }
+
+    for (i, record) in history.iter().enumerate() {
+        let valid = verify_record(record);
+
         println!(
-            "#{} | Duration: {}s | Hash: {}",
+            "#{} | Duration: {}s | Hash: {} | Valid: {}",
             i + 1,
-            h.duration,
-            h.hash
+            record.duration,
+            record.hash,
+            if valid { "YES" } else { "NO ❌" }
             );
         }
     }
+
 
 
 }
