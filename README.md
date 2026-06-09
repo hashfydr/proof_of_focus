@@ -114,25 +114,7 @@ Sessions: 0
 
 It’s a **learning-first systems project**.
 
----
 
-## Why I’m building this
-
-I wanted to stop:
-
-* blindly copying tutorials
-* chasing stacks without understanding
-* pretending I understand blockchains
-
-PoF forces me to deal with:
-
-* state
-* history
-* integrity
-* user intent
-* failure modes
-
----
 
 ## What might come next
 
